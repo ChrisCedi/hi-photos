@@ -6,11 +6,29 @@ const typeDefs = gql`
     id: ID
     name: String
     username: String
+    email: String
+    siteWeb: String
+    description: String
+    password: String
+    avatar: String
+    createAt: String
+  }
+
+  input UserInput {
+    name: String!
+    username: String!
+    email: String!
+    password: String!
   }
 
   type Query {
-    #user
+    #User
     getUser: User
+  }
+
+  type Mutation {
+    #User
+    register(values: UserInput): User
   }
 `;
 
