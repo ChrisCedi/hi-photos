@@ -1,0 +1,11 @@
+{
+  "name": "Hi-photos",
+  "version": "1.0.0",
+  "description": "hi photos app server",
+  "main": "index.js",
+  "author": "Christian Javier Cedillo Palacios ",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node ./index.js"
+  }
+}
