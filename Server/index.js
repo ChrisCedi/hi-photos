@@ -20,7 +20,7 @@ const server = () => {
     resolvers,
   });
 
-  serverApollo.listen().then((response) => {
-    console.log("server on");
+  serverApollo.listen().then(({ url }) => {
+    console.log("server on in: ", url);
   });
 };
