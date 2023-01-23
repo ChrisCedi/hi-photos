@@ -1,0 +1,2 @@
+En la parte del servidor vamos a utilizar apollo server y para el cliente se usara apollo cliente para hacer 
+la conexion entre servidor y cliente  

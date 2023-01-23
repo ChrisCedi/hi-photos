@@ -1,0 +1,17 @@
+{
+  "name": "Hi-photos",
+  "version": "1.0.0",
+  "description": "hi photos app server",
+  "main": "index.js",
+  "author": "Christian Javier Cedillo Palacios ",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node ./index.js"
+  },
+  "dependencies": {
+    "apollo-server": "^3.11.1",
+    "dotenv": "^16.0.3",
+    "graphql": "^16.6.0",
+    "mongoose": "^6.8.4"
+  }
+}
