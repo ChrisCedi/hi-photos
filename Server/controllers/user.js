@@ -33,4 +33,11 @@ const register = async (values) => {
   }
 };
 
-module.exports = { getUser, register };
+const login = async (values) => {
+  const { email, password } = values;
+
+  console.log("email: " + email);
+  console.log("password:" + password);
+};
+
+module.exports = { getUser, register, login };
