@@ -9,9 +9,11 @@ export const Auth = () => {
   const [showLogin, setShowLogin] = useState(true);
 
   return (
-    <div className={classes.container}>
-      <Box className={classes.body}>
-        <h1 className={classes.title}>Hi Photos</h1>
+    <Box className={classes.container}>
+      <Box className={showLogin ? classes.bodyLogin : classes.bodyRegister}>
+        <Typography variant="h3" className={classes.title}>
+          Hi Photos
+        </Typography>
         <Box className={classes.boxForm}>
           {showLogin ? <LoginForm /> : <RegisterForm />}
         </Box>
@@ -45,6 +47,6 @@ export const Auth = () => {
           </Box>
         )}
       </Box>
-    </div>
+    </Box>
   );
 };

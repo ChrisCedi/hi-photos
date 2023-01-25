@@ -5,18 +5,30 @@ const useStyles = makeStyles((theme) => ({
   container: {
     backgroundImage: `url(${Images.mainBackground})`,
     backgroundSize: "cover",
-    height: "100vh",
     backgroundPosition: "center",
+    backgroundAttachment: "fixed",
+    backgroundRepeat: "no-repeat",
   },
-  body: {
+  bodyRegister: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "column",
-    height: "100%",
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(4),
+  },
+  bodyLogin: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+    height: "100vh",
   },
   title: {
     color: theme.palette.border.grey,
+    textAlign: "center",
   },
   boxForm: {
     border: `1px solid ${theme.palette.border.grey}`,

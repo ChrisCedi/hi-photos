@@ -7,8 +7,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
   textField: {
-    margintop: theme.spacing(3),
-    marginBottom: theme.spacing(3),
+    margintop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
     //importanteeeeeee para modificar un textfield
 
     // "& label.Mui-focused": {

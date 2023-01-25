@@ -27,6 +27,7 @@ export const LoginForm = () => {
       <form className={classes.container} onSubmit={formik.handleSubmit}>
         <TextField
           id="email"
+          size="small"
           variant="outlined"
           label="Correo electrónico"
           className={classes.textField}
@@ -36,7 +37,11 @@ export const LoginForm = () => {
           helperText={formik.touched.email && formik.errors.email}
         />
 
-        <FormControl className={classes.textField} variant="outlined">
+        <FormControl
+          className={classes.textField}
+          variant="outlined"
+          size="small"
+        >
           <InputLabel htmlFor="outlined-adornment-password">
             Password
           </InputLabel>
@@ -66,7 +71,7 @@ export const LoginForm = () => {
         </FormControl>
 
         <Button variant="contained" color="primary" type="submit">
-          Iniciar
+          Iniciar sesión
         </Button>
       </form>
     </div>
