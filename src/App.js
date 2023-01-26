@@ -7,7 +7,7 @@ import { ThemeProvider } from "@material-ui/core";
 import { theme } from "./themeConfig";
 import { getToken } from "./utils/token";
 import { AuthContext } from "./context/Auth/AuthContext";
-import { Home } from "./views/Home/Home";
+import { Navigation } from "./routes/Navigation";
 
 export default function App() {
   const [auth, setAuth] = useState(undefined);
@@ -42,7 +42,7 @@ export default function App() {
     <ApolloProvider client={client}>
       <ThemeProvider theme={theme}>
         <AuthContext.Provider value={contextValue}>
-          {!auth ? <Auth /> : <Home />}
+          {!auth ? <Auth /> : <Navigation />}
           <ToastContainer
             position="top-right"
             autoClose={3000}
