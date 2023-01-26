@@ -6,16 +6,20 @@ import { RegisterForm } from "./RegisterForm/RegisterForm";
 
 export const Auth = () => {
   const classes = useStyles();
-  const [showLogin, setShowLogin] = useState(true);
+  const [showLogin, setShowLogin] = useState(false);
 
   return (
     <Box className={classes.container}>
-      <Box className={showLogin ? classes.bodyLogin : classes.bodyRegister}>
+      <Box className={showLogin ? classes.bodyLogin : classes.bodyLogin}>
         <Typography variant="h3" className={classes.title}>
           Hi Photos
         </Typography>
         <Box className={classes.boxForm}>
-          {showLogin ? <LoginForm /> : <RegisterForm />}
+          {showLogin ? (
+            <LoginForm />
+          ) : (
+            <RegisterForm changeScreen={setShowLogin} />
+          )}
         </Box>
         {showLogin ? (
           <Box className={classes.boxForm}>

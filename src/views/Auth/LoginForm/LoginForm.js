@@ -7,7 +7,7 @@ import {
   InputLabel,
   OutlinedInput,
   Button,
-  helperText,
+  Box,
   Typography,
 } from "@material-ui/core";
 import { useStyles } from "./LoginFormStyles";
@@ -17,7 +17,7 @@ import { useFields } from "./useFields";
 export const LoginForm = () => {
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
-  const { formik } = useFields();
+  const { formik, error } = useFields();
 
   return (
     <div>
@@ -74,6 +74,14 @@ export const LoginForm = () => {
           Iniciar sesión
         </Button>
       </form>
+
+      <Box>
+        {error ? (
+          <Typography variant="subtitle1" className={classes.errorLogin}>
+            {error}
+          </Typography>
+        ) : null}
+      </Box>
     </div>
   );
 };

@@ -7,19 +7,18 @@ import {
   InputLabel,
   OutlinedInput,
   Button,
-  helperText,
   Typography,
 } from "@material-ui/core";
 import { useStyles } from "./RegisterFormStyles";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import { useFields } from "./useFields";
 
-export const RegisterForm = () => {
+export const RegisterForm = ({ changeScreen }) => {
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
   const [showPassword1, setShowPassword1] = useState(false);
 
-  const { formik } = useFields();
+  const { formik } = useFields(changeScreen);
 
   return (
     <div>

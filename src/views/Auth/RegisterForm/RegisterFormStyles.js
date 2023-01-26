@@ -46,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
   description: {
     color: theme.palette.border.grey,
     paddingBottom: theme.spacing(2),
+    textAlign: "center",
   },
 }));
 

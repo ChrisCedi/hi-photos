@@ -1,7 +1,12 @@
 import { useFormik } from "formik";
 import * as yup from "yup";
+import { useMutation } from "@apollo/client";
+import { REGISTER } from "../../../gql/user";
+import { toast } from "react-toastify";
 
-export const useFields = () => {
+export const useFields = (changeScreen) => {
+  const [register] = useMutation(REGISTER);
+
   const validationSchema = yup.object({
     name: yup.string().required("Este campo es requerido"),
     username: yup
@@ -36,8 +41,29 @@ export const useFields = () => {
       confirmPassword: "",
     },
     validationSchema,
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      try {
+        const newUser = {
+          name: values.name,
+          username: values.username,
+          email: values.email,
+          password: values.password,
+        };
+
+        console.log(newUser);
+
+        await register({
+          variables: {
+            values: newUser,
+          },
+        });
+
+        toast.success("El usuario registrado correctamente");
+        changeScreen(true);
+      } catch (error) {
+        toast.error(error.message);
+        console.log(error);
+      }
     },
   });
 

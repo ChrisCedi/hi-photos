@@ -46,6 +46,12 @@ const useStyles = makeStyles((theme) => ({
   description: {
     color: theme.palette.border.grey,
     paddingBottom: theme.spacing(2),
+    textAlign: "center",
+  },
+  errorLogin: {
+    textAlign: "center",
+    color: theme.palette.actions.danger,
+    paddingTop: theme.spacing(2),
   },
 }));
 

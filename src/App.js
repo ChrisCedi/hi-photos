@@ -1,18 +1,60 @@
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import client from "./config/apollo";
 import { ApolloProvider } from "@apollo/client";
+import { ToastContainer } from "react-toastify";
 import { Auth } from "./views/Auth";
 import { ThemeProvider } from "@material-ui/core";
 import { theme } from "./themeConfig";
-import { Images } from "./assets/images";
+import { getToken } from "./utils/token";
+import { AuthContext } from "./context/Auth/AuthContext";
+import { Home } from "./views/Home/Home";
 
 export default function App() {
-  const [auth, setAuth] = useState(null);
+  const [auth, setAuth] = useState(undefined);
+
+  const logout = () => {
+    console.log("adios");
+  };
+  useEffect(() => {
+    const token = getToken();
+
+    if (!token) {
+      setAuth(null);
+    } else {
+      setAuth(token);
+    }
+  }, []);
+
+  const setUser = (user) => {
+    setAuth(user);
+  };
+
+  const contextValue = useMemo(
+    () => ({
+      auth,
+      logout,
+      setUser,
+    }),
+    [auth]
+  );
 
   return (
     <ApolloProvider client={client}>
       <ThemeProvider theme={theme}>
-        {!auth ? <Auth /> : <h1>estas loggeado</h1>}
+        <AuthContext.Provider value={contextValue}>
+          {!auth ? <Auth /> : <Home />}
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar
+            newestOnTop
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
+        </AuthContext.Provider>
       </ThemeProvider>
     </ApolloProvider>
   );
