@@ -10,7 +10,7 @@ const routes = [
     exact: true,
   },
   {
-    path: "/user",
+    path: "/user/:username",
     component: User,
     exact: true,
   },
