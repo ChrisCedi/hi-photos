@@ -6,5 +6,7 @@ export const Home = () => {
   const classes = useStyles();
   const auth = useAuth();
 
+  console.log("auth", auth);
+
   return <div className={classes.box}>Home</div>;
 };
