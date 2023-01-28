@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
   },
   boxForm: {
-    border: `1px solid ${theme.palette.border.grey}`,
+    border: `1px solid ${theme.palette.secondary.main}`,
     paddingLeft: theme.spacing(5),
     paddingRight: theme.spacing(5),
     marginTop: theme.spacing(2),

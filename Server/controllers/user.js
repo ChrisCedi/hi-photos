@@ -2,17 +2,10 @@ const User = require("../models/user");
 const bcriptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const getUser = () => {
-  console.log("get user");
-  return null;
-};
-
 const register = async (values) => {
   const newUser = values;
   newUser.username = newUser.username.toLowerCase();
   newUser.email = newUser.email.toLowerCase();
-
-  console.log(newUser);
 
   const { email, password, username } = newUser;
 
@@ -58,6 +51,18 @@ const login = async (values) => {
   return {
     token: createToken(userFound, process.env.SECRET_KEY, "10h"),
   };
+};
+
+const getUser = async (id, username) => {
+  let user = null;
+
+  console.log(id);
+
+  if (id) user = await User.findById(id);
+  if (username) user = await User.findOne({ username });
+  if (!user) throw new Error("El usuario no existe");
+
+  return user;
 };
 
 module.exports = { getUser, register, login };

@@ -50,8 +50,6 @@ export const useFields = (changeScreen) => {
           password: values.password,
         };
 
-        console.log(newUser);
-
         await register({
           variables: {
             values: newUser,
