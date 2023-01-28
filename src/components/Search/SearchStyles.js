@@ -1,7 +1,5 @@
 import { makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
-  box: {},
-}));
+const useStyles = makeStyles((theme) => ({}));
 
 export { useStyles };

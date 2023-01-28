@@ -8,6 +8,7 @@ import { theme } from "./themeConfig";
 import { getToken } from "./utils/token";
 import { AuthContext } from "./context/Auth/AuthContext";
 import { Navigation } from "./routes/Navigation";
+import { decodeToken } from "./utils/token";
 
 export default function App() {
   const [auth, setAuth] = useState(undefined);
@@ -21,7 +22,7 @@ export default function App() {
     if (!token) {
       setAuth(null);
     } else {
-      setAuth(token);
+      setAuth(decodeToken(token));
     }
   }, []);
 
