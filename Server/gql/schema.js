@@ -18,6 +18,13 @@ const typeDefs = gql`
     token: String
   }
 
+  scalar Upload
+
+  type UpdateAvatar {
+    status: Boolean
+    urlAvatar: String
+  }
+
   input UserInput {
     name: String!
     username: String!
@@ -39,6 +46,7 @@ const typeDefs = gql`
     #User
     register(values: UserInput): User
     login(values: loginValues): Token
+    updateAvatar(file: Upload!): UpdateAvatar
   }
 `;
 
