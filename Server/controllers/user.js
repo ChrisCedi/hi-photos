@@ -65,4 +65,9 @@ const getUser = async (id, username) => {
   return user;
 };
 
-module.exports = { getUser, register, login };
+const updateAvatar = (file) => {
+  console.log(file);
+  return null;
+};
+
+module.exports = { getUser, register, login, updateAvatar };

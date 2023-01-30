@@ -2,12 +2,28 @@ import React, { useCallback } from "react";
 import { Button } from "@material-ui/core";
 import { useStyles } from "./AvatarOptionsStyles";
 import { useDropzone } from "react-dropzone";
+import { useMutation } from "@apollo/client";
+import { UPDATE_AVATAR } from "../../gql/user";
 
 export const AvatarOptions = (handleOpen) => {
   const classes = useStyles();
 
-  const onDrop = useCallback((acceptedFile) => {
-    console.log(acceptedFile);
+  const [updateAvatar] = useMutation(UPDATE_AVATAR);
+
+  const onDrop = useCallback(async (acceptedFile) => {
+    const file = acceptedFile[0];
+
+    try {
+      const response = await updateAvatar({
+        variables: {
+          file,
+        },
+      });
+
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   const { getRootProps, getInputProps } = useDropzone({

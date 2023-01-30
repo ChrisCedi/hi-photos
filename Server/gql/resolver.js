@@ -10,6 +10,7 @@ const resolver = {
     //User
     register: (_, { values }) => userController.register(values),
     login: (_, { values }) => userController.login(values),
+    updateAvatar: (_, { file }) => userController.updateAvatar(file),
   },
 };
 
