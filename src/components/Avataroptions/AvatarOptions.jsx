@@ -5,7 +5,7 @@ import { useDropzone } from "react-dropzone";
 import { useMutation } from "@apollo/client";
 import { UPDATE_AVATAR } from "../../gql/user";
 
-export const AvatarOptions = (handleOpen) => {
+export const AvatarOptions = ({ handleOpen }) => {
   const classes = useStyles();
 
   const [updateAvatar] = useMutation(UPDATE_AVATAR);
@@ -40,7 +40,7 @@ export const AvatarOptions = (handleOpen) => {
       </Button>
       <Button className={classes.delete}>Eliminar foto actual</Button>
 
-      <Button onClick={handleOpen}>Cancelar</Button>
+      <Button onClick={() => handleOpen(false)}>Cancelar</Button>
       <input {...getInputProps()} />
     </div>
   );
