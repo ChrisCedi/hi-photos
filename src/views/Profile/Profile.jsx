@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_USER } from "../../gql/user";
 import { useStyles } from "./ProfileStyles";
@@ -16,6 +16,10 @@ export const Profile = ({ username }) => {
   const [component, setComponent] = useState(null);
   const user = useAuth();
 
+  useEffect(() => {
+    console.log(open);
+  }, [open]);
+
   const { data, loading, error } = useQuery(GET_USER, {
     variables: {
       username,
@@ -28,8 +32,7 @@ export const Profile = ({ username }) => {
     switch (option) {
       case "avatar":
         setTitle("Cambiar foto de perfil");
-        setComponent(<AvatarOptions handleOpen={handleOpen} />);
-        handleOpen();
+        setComponent(<AvatarOptions handleOpen={setOpen} />);
 
         break;
 
@@ -38,17 +41,18 @@ export const Profile = ({ username }) => {
     }
   };
 
-  const handleOpen = () => {
-    if (username === user.auth.username) setOpen(!open);
-  };
-
   if (loading) return null;
   if (error) return <UserNotFound />;
 
   return (
     <Grid container>
       <Grid item xs={12} className={classes.gridAvatar}>
-        <IconButton onClick={() => handleAvatarOptions("avatar")}>
+        <IconButton
+          onClick={() => {
+            handleAvatarOptions("avatar");
+            setOpen(true);
+          }}
+        >
           <Avatar className={classes.avatar} />
         </IconButton>
         <Typography variant="h4" className={classes.username}>
@@ -63,7 +67,7 @@ export const Profile = ({ username }) => {
       <Grid item xs={12} sm={6} className={classes.gridInfo}>
         <Typography>Followers: 5543</Typography>
       </Grid>
-      <ModalBasic open={open} setOpen={handleOpen} title={title}>
+      <ModalBasic open={open} setOpen={setOpen} title={title}>
         {component}
       </ModalBasic>
     </Grid>
